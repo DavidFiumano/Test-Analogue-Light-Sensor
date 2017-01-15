@@ -11,7 +11,7 @@
 #include <CanTalonSRX.h>
 
 class Robot: public frc::SampleRobot {
-	frc::AnalogInput * lightsensor = new frc::AnalogInput(3);
+	frc::DigitalInput * lightsensor = new frc::DigitalInput(3);
 
 public:
 	Robot() {
@@ -29,14 +29,14 @@ public:
 	void OperatorControl() override {
 		//myRobot.SetSafetyEnabled(true);
 		while (IsOperatorControl() && IsEnabled()) {
-			std::cout << lightsensor->GetValue() << std::endl;
+			std::cout << lightsensor->Get() << std::endl;
 			frc::Wait(0.005);
 		}
 	}
 
 	void Test() override {
 		while(IsEnabled()) {
-			std::cout << lightsensor->GetValue() << std::endl;
+			std::cout << lightsensor->Get() << std::endl;
 			frc::Wait(0.005);
 		}
 	}
